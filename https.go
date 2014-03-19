@@ -63,7 +63,7 @@ func (proxy *ProxyHttpServer) handleHttps(w http.ResponseWriter, r *http.Request
 	}
 
 	ctx.Logf("Running %d CONNECT handlers", len(proxy.httpsHandlers))
-	todo, host := OkConnect, r.URL.Host
+	todo, host := MitmConnect, r.URL.Host
 	ctx.Req = r
 	for _, h := range proxy.httpsHandlers {
 		newtodo, newhost := h.HandleConnect(host, ctx)
